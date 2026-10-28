@@ -15,3 +15,9 @@ const pool = new Pool({
   password: "",
   port: 5432,
 });
+
+//MIDDLEWARE LOGGING
+app.use((req, res, next) => {
+  const start = Date.now();
+
+
