@@ -7,12 +7,13 @@ import { abort } from "node:process";
 const app = express();
 const port = 3000;
 const { Pool } = pg;
+app.use(express.json());
 
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "mahasiswa",
-  password: "",
+  password: "cikarang",
   port: 5432,
 });
 
@@ -140,7 +141,7 @@ app.put(
       .fork(["id"], (field) => field.forbidden()),
   ),
   async (req, res) => {
-    const { id } = req.paramas;
+    const { id } = req.params;
     const { nama, nim, kelas } = req.body;
 
     const result = await pool.query(
