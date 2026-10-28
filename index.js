@@ -110,3 +110,10 @@ function validateParams(schema) {
     next();
   };
 }
+
+//end point
+app.get("/", async (req, res) => {
+  const result = await pool.query("SELECT * FROM biodata ORDER BY id");
+
+  return successResponse(res, "Data Bergasil Diambil", result.rows);
+});
